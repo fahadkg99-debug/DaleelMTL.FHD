@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل الزوار – مونتريال</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background: #d0d0d0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.app {
+  width: 100%;
+  max-width: 680px;
+  min-height: 100vh;
+  position: relative;
+  box-shadow: 0 0 60px rgba(0,0,0,0.3);
+}
+
+/* ============================================================
+   COVER — professional redesign
+   ============================================================ */
+#cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0b1622;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ambient glow layers */
+#cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 50% at 50% 0%, rgba(200,16,46,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 45% at 0% 100%, rgba(26,58,143,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 100% 60%, rgba(255,210,63,0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* geometric SVG background */
+.cover-bg-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* top accent strip */
+.cover-topstrip {
+  height: 4px;
+  background: linear-gradient(90deg, #c8102e 0%, #FFD23F 40%, #c8102e 70%, #1a3a8f 100%);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- hero ---- */
+.cover-hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 28px 16px;
+  position: relative;
+  z-index: 2;
+}
+
+/* location badge */
+.cover-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 14px 5px 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(6px);
+  margin-bottom: 26px;
+}
+.cover-badge-flag { font-size: 1rem; }
+.cover-badge-text {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 2.5px;
+}
+
+/* skyline illustration */
+.cover-skyline-wrap {
+  width: 100%;
+  max-width: 440px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+/* title */
+.cover-title {
+  text-align: center;
+  margin-bottom: 6px;
+}
+.cover-title-line1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.9rem;
+  color: #c8102e;
+  letter-spacing: 4px;
+  display: block;
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
+.cover-title-main {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 900;
+  font-size: 3.2rem;
+  color: #fff;
+  line-height: 1.0;
+  letter-spacing: -1.5px;
+  display: block;
+}
+.cover-title-main span { color: #FFD23F; }
+.cover-title-sub {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: rgba(255,255,255,0.5);
+  display: block;
+  margin-top: 4px;
+}
+
+/* rule with icon */
+.cover-rule {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  margin: 16px auto 14px;
+}
+.cover-rule-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+}
+.cover-rule-text {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 3px;
+}
+
+/* stats row */
+.cover-stats {
+  display: flex;
+  gap: 0;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.03);
+  width: 100%;
+  max-width: 340px;
+}
+.cover-stat {
+  flex: 1;
+  padding: 10px 8px;
+  text-align: center;
+  border-left: 1px solid rgba(255,255,255,0.06);
+}
+.cover-stat:last-child { border-left: none; }
+.cover-stat-num {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.3rem;
+  color: #FFD23F;
+  display: block;
+  line-height: 1;
+}
+.cover-stat-label {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.35);
+  font-weight: 600;
+  display: block;
+  margin-top: 3px;
+}
+
+/* ---- navigation ---- */
+.cover-nav {
+  padding: 0 20px 4px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.nav-section-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.nav-btn {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 14px;
+  padding: 14px 12px;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700;
+  font-size: 0.97rem;
+  color: rgba(255,255,255,0.85);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  text-align: right;
+  position: relative;
+  overflow: hidden;
+}
+.nav-btn-accent {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: 0 14px 14px 0;
+  background: #c8102e;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.nav-btn:hover {
+  border-color: rgba(200,16,46,0.4);
+  background: rgba(200,16,46,0.08);
+  color: #fff;
+  transform: translateX(-2px);
+}
+.nav-btn:hover .nav-btn-accent { opacity: 1; }
+
+.btn-icon { font-size: 1.45rem; flex-shrink: 0; }
+.nav-btn.full-width {
+  grid-column: 1 / -1;
+  justify-content: center;
+  padding: 12px;
+}
+.nav-btn.full-width .nav-btn-accent {
+  width: 100%; height: 2px; top: auto; bottom: 0;
+  border-radius: 0 0 14px 14px;
+}
+
+/* ---- footer ---- */
+.cover-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 22px 16px;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 14px;
+}
+.cover-footer-author {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.22);
+  letter-spacing: 2px;
+}
+.cover-footer-date {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.22);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   INNER PAGES — clean white
+   ============================================================ */
+.page {
+  display: none;
+  min-height: 100vh;
+  background: #f2f2f2;
+  padding-bottom: 90px;
+}
+
+/* sticky dark header */
+.page-header {
+  background: #0b1622;
+  padding: 20px 20px 14px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.35);
+}
+.page-header::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, #c8102e, #FFD23F 50%, #1a3a8f);
+  margin-top: 12px;
+  border-radius: 2px;
+}
+
+.header-inner { display: flex; align-items: center; gap: 14px; }
+.page-icon { font-size: 1.9rem; }
+.page-title { font-size: 1.55rem; font-weight: 900; color: #fff; }
+.page-subtitle {
+  font-size: 0.68rem;
+  color: rgba(255,210,63,0.75);
+  font-weight: 700;
+  margin-top: 2px;
+  letter-spacing: 1.8px;
+}
+
+/* warning */
+.warning-box {
+  background: #fffbeb;
+  border-right: 4px solid #f59e0b;
+  border-radius: 0 10px 10px 0;
+  padding: 11px 14px 11px 10px;
+  margin: 14px 14px 0;
+  color: #78350f;
+  font-size: 0.83rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+/* section header */
+.section-header {
+  color: #0b1622;
+  font-size: 1rem;
+  font-weight: 900;
+  padding: 20px 14px 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-header::after {
+  content: '';
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(200,16,46,0.7), rgba(200,16,46,0.0));
+  border-radius: 2px;
+}
+
+/* cards */
+.cards-list {
+  padding: 6px 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.card {
+  border-radius: 14px;
+  padding: 14px 15px 13px;
+  border: none;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+.card:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.38);
+  transform: translateY(-2px);
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+}
+
+/* dark colored card backgrounds */
+.card-food    { background: #7a1a1a; }
+.card-shop    { background: #0f3320; }
+.card-service { background: #0d1f3c; }
+
+.card-name-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 6px;
+}
+.card-emoji { font-size: 1.3rem; flex-shrink: 0; }
+.card-name {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.card-desc {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+  margin-bottom: 9px;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.tag {
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.tag-halal   { background: #0f2a14; color: #4ade80; }
+.tag-cat     { background: rgba(0,0,0,0.3); color: #ffd580; }
+.tag-uber    { background: #2a1500; color: #fb923c; }
+.tag-gf      { background: #1e0a2e; color: #c084fc; }
+
+.card-map a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition: color 0.15s;
+}
+.card-map a:hover { color: #FFD23F; }
+
+/* tip box */
+.tip-box {
+  background: #fff;
+  border-right: 4px solid #1a3a8f;
+  border-radius: 0 12px 12px 0;
+  border: 1px solid rgba(26,58,143,0.15);
+  border-right-width: 4px;
+  padding: 15px;
+  margin: 0 14px;
+  color: #333;
+  font-size: 0.84rem;
+  line-height: 1.85;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+.tip-box strong { color: #c8102e; }
+
+/* back button */
+.back-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0b1622;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 12px 28px;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  transition: all 0.2s;
+  z-index: 100;
+  white-space: nowrap;
+}
+.back-btn:hover {
+  transform: translateX(-50%) translateY(-2px);
+  background: #c8102e;
+  box-shadow: 0 8px 24px rgba(200,16,46,0.5);
+}
+
+@media (max-width: 400px) {
+  .cover-title-main { font-size: 2.6rem; }
+  .nav-btn { font-size: 0.88rem; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ===================== COVER ===================== -->
+<div id="cover">
+  <div class="cover-topstrip"></div>
+
+  <!-- background SVG geometry -->
+  <svg class="cover-bg-svg" viewBox="0 0 680 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <!-- large rings -->
+    <circle cx="560" cy="120" r="300" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    <circle cx="560" cy="120" r="220" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+    <circle cx="560" cy="120" r="140" fill="none" stroke="rgba(200,16,46,0.06)" stroke-width="1"/>
+    <!-- diagonal accent lines -->
+    <line x1="0" y1="750" x2="300" y2="450" stroke="rgba(255,210,63,0.05)" stroke-width="1"/>
+    <line x1="0" y1="800" x2="280" y2="520" stroke="rgba(255,210,63,0.03)" stroke-width="1"/>
+    <!-- bottom right grid dots -->
+    <g fill="rgba(255,255,255,0.04)">
+      <circle cx="540" cy="700" r="2.5"/><circle cx="580" cy="700" r="2.5"/><circle cx="620" cy="700" r="2.5"/><circle cx="660" cy="700" r="2.5"/>
+      <circle cx="540" cy="740" r="2.5"/><circle cx="580" cy="740" r="2.5"/><circle cx="620" cy="740" r="2.5"/><circle cx="660" cy="740" r="2.5"/>
+      <circle cx="540" cy="780" r="2.5"/><circle cx="580" cy="780" r="2.5"/><circle cx="620" cy="780" r="2.5"/><circle cx="660" cy="780" r="2.5"/>
+      <circle cx="540" cy="820" r="2.5"/><circle cx="580" cy="820" r="2.5"/><circle cx="620" cy="820" r="2.5"/>
+    </g>
+  </svg>
+
+  <div class="cover-hero">
+
+    <!-- location badge -->
+    <div class="cover-badge">
+      <span class="cover-badge-flag">🇨🇦</span>
+      <span class="cover-badge-text">MONTREAL · CANADA</span>
+    </div>
+
+    <!-- Montreal skyline SVG illustration -->
+    <div class="cover-skyline-wrap">
+      <svg viewBox="0 0 440 130" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(200,16,46,0.05)"/>
+            <stop offset="100%" stop-color="rgba(11,22,34,0)"/>
+          </linearGradient>
+          <linearGradient id="b1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.14)"/>
+            <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+          </linearGradient>
+          <linearGradient id="b2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.2)"/>
+            <stop offset="100%" stop-color="rgba(255,255,255,0.06)"/>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- sky -->
+        <rect width="440" height="130" fill="url(#bg)" rx="12"/>
+
+        <!-- far background buildings -->
+        <rect x="5"   y="80" width="28" height="50" rx="2" fill="rgba(255,255,255,0.04)"/>
+        <rect x="36"  y="65" width="22" height="65" rx="2" fill="rgba(255,255,255,0.05)"/>
+        <rect x="62"  y="72" width="30" height="58" rx="2" fill="rgba(255,255,255,0.04)"/>
+        <rect x="370" y="70" width="24" height="60" rx="2" fill="rgba(255,255,255,0.04)"/>
+        <rect x="398" y="60" width="30" height="70" rx="2" fill="rgba(255,255,255,0.05)"/>
+        <rect x="415" y="78" width="20" height="52" rx="2" fill="rgba(255,255,255,0.04)"/>
+
+        <!-- mid buildings -->
+        <rect x="96"  y="75" width="34" height="55" rx="2" fill="url(#b1)"/>
+        <rect x="102" y="67" width="22" height="10" rx="1" fill="rgba(255,255,255,0.1)"/>
+        <g fill="rgba(255,210,63,0.3)">
+          <rect x="100" y="82" width="6" height="5" rx="1"/>
+          <rect x="111" y="82" width="6" height="5" rx="1"/>
+          <rect x="122" y="82" width="6" height="5" rx="1"/>
+          <rect x="100" y="93" width="6" height="5" rx="1"/>
+          <rect x="122" y="93" width="6" height="5" rx="1"/>
+        </g>
+
+        <!-- tallest building (Place Ville-Marie style) -->
+        <rect x="178" y="22" width="48" height="108" rx="2" fill="url(#b2)"/>
+        <rect x="190" y="10" width="24" height="14" rx="1" fill="rgba(255,255,255,0.15)"/>
+        <!-- antenna -->
+        <line x1="202" y1="-4" x2="202" y2="10" stroke="rgba(200,16,46,0.95)" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="202" cy="-4" r="3.5" fill="#c8102e" filter="url(#glow)"/>
+        <!-- windows grid -->
+        <g fill="rgba(255,210,63,0.35)">
+          <rect x="183" y="30" width="7" height="6" rx="1"/><rect x="196" y="30" width="7" height="6" rx="1"/><rect x="209" y="30" width="7" height="6" rx="1"/>
+          <rect x="183" y="43" width="7" height="6" rx="1"/><rect x="196" y="43" width="7" height="6" rx="1"/><rect x="209" y="43" width="7" height="6" rx="1"/>
+          <rect x="183" y="56" width="7" height="6" rx="1"/><rect x="196" y="56" width="7" height="6" rx="1"/><rect x="209" y="56" width="7" height="6" rx="1"/>
+          <rect x="183" y="69" width="7" height="6" rx="1"/><rect x="209" y="69" width="7" height="6" rx="1"/>
+          <rect x="183" y="82" width="7" height="6" rx="1"/><rect x="196" y="82" width="7" height="6" rx="1"/><rect x="209" y="82" width="7" height="6" rx="1"/>
+          <rect x="183" y="95" width="7" height="6" rx="1"/><rect x="209" y="95" width="7" height="6" rx="1"/>
+        </g>
+
+        <!-- right cluster -->
+        <rect x="234" y="48" width="40" height="82" rx="2" fill="url(#b1)"/>
+        <rect x="240" y="40" width="28" height="10" rx="1" fill="rgba(255,255,255,0.12)"/>
+        <g fill="rgba(255,210,63,0.28)">
+          <rect x="238" y="56" width="6" height="5" rx="1"/><rect x="250" y="56" width="6" height="5" rx="1"/><rect x="262" y="56" width="6" height="5" rx="1"/>
+          <rect x="238" y="67" width="6" height="5" rx="1"/><rect x="250" y="67" width="6" height="5" rx="1"/><rect x="262" y="67" width="6" height="5" rx="1"/>
+          <rect x="238" y="78" width="6" height="5" rx="1"/><rect x="262" y="78" width="6" height="5" rx="1"/>
+          <rect x="238" y="89" width="6" height="5" rx="1"/><rect x="250" y="89" width="6" height="5" rx="1"/>
+          <rect x="238" y="100" width="6" height="5" rx="1"/><rect x="262" y="100" width="6" height="5" rx="1"/>
+        </g>
+
+        <rect x="280" y="62" width="32" height="68" rx="2" fill="url(#b1)"/>
+        <g fill="rgba(255,210,63,0.25)">
+          <rect x="284" y="70" width="6" height="5" rx="1"/><rect x="296" y="70" width="6" height="5" rx="1"/>
+          <rect x="284" y="81" width="6" height="5" rx="1"/><rect x="296" y="81" width="6" height="5" rx="1"/>
+          <rect x="284" y="92" width="6" height="5" rx="1"/><rect x="296" y="92" width="6" height="5" rx="1"/>
+          <rect x="284" y="103" width="6" height="5" rx="1"/>
+        </g>
+
+        <rect x="318" y="75" width="26" height="55" rx="2" fill="url(#b1)"/>
+        <g fill="rgba(255,210,63,0.22)">
+          <rect x="322" y="83" width="5" height="5" rx="1"/><rect x="333" y="83" width="5" height="5" rx="1"/>
+          <rect x="322" y="94" width="5" height="5" rx="1"/><rect x="333" y="94" width="5" height="5" rx="1"/>
+        </g>
+
+        <!-- ground line -->
+        <rect x="0" y="128" width="440" height="2" fill="rgba(200,16,46,0.5)" rx="1"/>
+
+        <!-- flight path dashed arc -->
+        <path d="M 25 90 Q 120 15 220 50 Q 320 85 415 25"
+              fill="none" stroke="rgba(255,210,63,0.25)" stroke-width="1.5" stroke-dasharray="6,4"/>
+        <!-- airplane -->
+        <g transform="translate(411,23) rotate(-20)">
+          <ellipse cx="0" cy="0" rx="9" ry="2.8" fill="rgba(255,255,255,0.75)"/>
+          <polygon points="0,-2.8 9,0 0,2.8" fill="rgba(255,255,255,0.5)"/>
+          <polygon points="-2.5,-2.8 -7.5,-7.5 2.5,-2.8" fill="rgba(255,255,255,0.7)"/>
+          <polygon points="-2.5,2.8 -7.5,7.5 2.5,2.8" fill="rgba(255,255,255,0.7)"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- title -->
+    <div class="cover-title">
+      <span class="cover-title-line1">VISITOR GUIDE</span>
+      <span class="cover-title-main">دليل <span>مونتريال</span></span>
+      <span class="cover-title-sub">للزوار العرب</span>
+    </div>
+
+    <div class="cover-rule">
+      <div class="cover-rule-line"></div>
+      <div class="cover-rule-text">APRIL 2026</div>
+      <div class="cover-rule-line"></div>
+    </div>
+
+    <!-- stats -->
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <span class="cover-stat-num">41+</span>
+        <span class="cover-stat-label">مطعم</span>
+      </div>
+      <div class="cover-stat">
+        <span class="cover-stat-num">8</span>
+        <span class="cover-stat-label">كافيه</span>
+      </div>
+      <div class="cover-stat">
+        <span class="cover-stat-num">7</span>
+        <span class="cover-stat-label">متجر</span>
+      </div>
+      <div class="cover-stat">
+        <span class="cover-stat-num">5</span>
+        <span class="cover-stat-label">خدمة</span>
+      </div>
+    </div>
+
+  </div><!-- end cover-hero -->
+
+  <!-- navigation -->
+  <div class="cover-nav">
+    <div class="nav-section-label">اختر القسم</div>
+    <div class="nav-grid">
+      <button class="nav-btn" onclick="showPage('page-food')">
+        <span class="btn-icon">🍽️</span> مطاعم
+        <div class="nav-btn-accent"></div>
+      </button>
+      <button class="nav-btn" onclick="showPage('page-cafe')">
+        <span class="btn-icon">☕</span> كافيهات
+        <div class="nav-btn-accent"></div>
+      </button>
+      <button class="nav-btn" onclick="showPage('page-shop')">
+        <span class="btn-icon">🛍️</span> تسوق
+        <div class="nav-btn-accent"></div>
+      </button>
+      <button class="nav-btn" onclick="showPage('page-grocery')">
+        <span class="btn-icon">🛒</span> سوبرماركت
+        <div class="nav-btn-accent"></div>
+      </button>
+      <button class="nav-btn full-width" onclick="showPage('page-services')">
+        <span class="btn-icon">🏥</span> خدمات عامة
+        <div class="nav-btn-accent"></div>
+      </button>
+      <button class="nav-btn full-width" onclick="showPage('page-attractions')">
+        <span class="btn-icon">🎡</span> ترفيه وسياحة
+        <div class="nav-btn-accent"></div>
+      </button>
+      <button class="nav-btn full-width" onclick="showPage('page-walaaim')">
+        <span class="btn-icon">🍖</span> ولائم وذبائح
+        <div class="nav-btn-accent"></div>
+      </button>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-author">BY FAHAD K. ALGHAMDI</div>
+    <div class="cover-footer-date">أبريل ٢٠٢٦</div>
+  </div>
+
+</div><!-- end cover -->
+
+<!-- ===================== PAGE: FOOD ===================== -->
+<div class="page" id="page-food">
+  <div class="page-header">
+    <div class="header-inner">
+      <span class="page-icon">🍽️</span>
+      <div>
+        <div class="page-title">المطاعم</div>
+        <div class="page-subtitle">RESTAURANTS · MONTREAL</div>
+      </div>
+    </div>
+  </div>
+  <div class="warning-box">⚠️ تنبيه مهم: دائماً تأكد من مواعيد الفتح والإغلاق عبر قوقل ماب قبل التوجه، وبعض الأماكن تحتاج حجزاً مسبقاً!</div>
+
+  <div class="section-header">🌙 مطاعم عربية وشرق أوسطية</div>
+  <div class="cards-list">
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🫓</span><span class="card-name">O fuor مناقيش</span></div><div class="card-desc">أفضل مناقيش وفطائر لبنانية أصيلة في المدينة، مثالي للإفطار والبرانش.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">لبناني · مناقيش</span></div><div class="card-map"><a href="https://www.google.com/maps/search/O+Fuor+Manaeesh+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🍲</span><span class="card-name">Mazbi يمني</span></div><div class="card-desc">مطعم يمني أصيل بأطباق المظبي والمندي الشهيرة، نكهات منزلية دافئة.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">يمني</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Mazbi+Yemeni+Restaurant+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🥙</span><span class="card-name">داماس</span></div><div class="card-desc">مطعم سوري راقٍ يقدم أجود الأطباق الشامية في أجواء عائلية مميزة.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">سوري</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Damas+Restaurant+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🌿</span><span class="card-name">بيت بيروتي</span></div><div class="card-desc">مطبخ لبناني تقليدي بأجواء دافئة، من التبولة إلى الكبة، كل شيء أصيل.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">لبناني</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Beit+Beiruti+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🍽️</span><span class="card-name">Bayrut Restaurant</span></div><div class="card-desc">مأكولات لبنانية متنوعة بين المقبلات والأطباق الرئيسية في قلب المدينة.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">لبناني</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Bayrut+Restaurant+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🫕</span><span class="card-name">بيروتي</span></div><div class="card-desc">وجبات لبنانية سريعة وشهية، مناسب للغداء أو العشاء السريع.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">لبناني · فاست فود</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Beiruti+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🚗</span><span class="card-name">كراج بيروت</span></div><div class="card-desc">مطعم لبناني ترندي بمفهوم مختلف وديكور مميز يجعله وجهة مفضلة للشباب.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">لبناني · مودرن</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Garage+Beirut+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">👨‍🍳</span><span class="card-name">LE CHEF</span></div><div class="card-desc">مطبخ شرق أوسطي بلمسة احترافية من الشيف، تجربة عشاء لا تُنسى.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">شرق أوسطي · فاين دايننج</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Le+Chef+Restaurant+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🇹🇷</span><span class="card-name">سرايا تركي</span></div><div class="card-desc">أطباق تركية أصيلة من الكباب والبيتزا التركية والحلويات الشرقية.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">تركي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Saraya+Turkish+Restaurant+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🥩</span><span class="card-name">Antep Kabab</span></div><div class="card-desc">كباب تركي أصيل بنكهة أنتاكيا الشهيرة، لحوم طازجة ومشويات لذيذة.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">تركي · كباب</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Antep+Kabab+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🧆</span><span class="card-name">أبو الزلف</span></div><div class="card-desc">مطعم شعبي بأسعار مناسبة، تشكيلة واسعة من المقبلات والمشويات العربية.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">عربي · شعبي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Abu+Al+Zalaf+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">✨</span><span class="card-name">ميراج</span></div><div class="card-desc">مطعم شرق أوسطي بأجواء فاخرة، مناسب للعشاء الراقي والمناسبات الخاصة.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">شرق أوسطي · فاخر</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Mirage+Restaurant+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🥪</span><span class="card-name">لولو ساندويتشات</span></div><div class="card-desc">ساندويتشات عربية سريعة ولذيذة، وجهة مثالية للوجبة الخفيفة.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">ساندويتشات</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Loulou+Sandwiches+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🐟</span><span class="card-name">الريان سمك</span></div><div class="card-desc">أفضل مطعم أسماك حلال في مونتريال، أسماك طازجة بطرق طهي عربية وبحرية.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">مأكولات بحرية</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Al+Rayyan+Fish+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+
+  <div class="section-header">🌯 شاورما وفلافل</div>
+  <div class="cards-list">
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🌯</span><span class="card-name">Boustan</span></div><div class="card-desc">الأشهر في مونتريال للشاورما اللبنانية، سلسلة شعبية يرتادها الجميع.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">شاورما · لبناني</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Boustan+Shawarma+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🥙</span><span class="card-name">Shawarmaz</span></div><div class="card-desc">شاورما متنوعة بخيارات مختلفة وخبز محلي، تجربة لذيذة ومختلفة.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">شاورما</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Shawarmaz+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🌍</span><span class="card-name">شاورما دونيا</span></div><div class="card-desc">شاورما دونيا يقدم نكهات شرقية أصيلة بسعر معقول وخدمة سريعة.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">شاورما</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Shawarma+Donya+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🥙</span><span class="card-name">شاورما Bei</span></div><div class="card-desc">نكهات بيروتية في شاورما متميزة، حلال ومميز في حي Plateau.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">شاورما · لبناني</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Shawarma+Bei+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🧆</span><span class="card-name">فلافل دوت</span></div><div class="card-desc">فلافل مقرمشة حلال، خيار نباتي ممتاز في قلب مونتريال.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">فلافل · نباتي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Falafel+Dot+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🧆</span><span class="card-name">فلافل بوليفارد</span></div><div class="card-desc">فلافل بوليفارد أحد أشهر محلات الفلافل على الشارع الرئيسي، لا تفوته.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">فلافل</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Falafel+Boulevard+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+
+  <div class="section-header">🍔 برجر</div>
+  <div class="cards-list">
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🍔</span><span class="card-name">Burger Bar Crescent</span></div><div class="card-desc">برجر كندي كلاسيكي في شارع Crescent الشهير، أجواء رائعة وطعم لا يُنسى.</div><div class="card-tags"><span class="tag tag-cat">برجر · كندي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Burger+Bar+Crescent+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">👋</span><span class="card-name">Patty Slaps</span></div><div class="card-desc">برجر سميل ترندي بنكهات مبتكرة وباتيز سميكة، من أفضل البرجر في المدينة.</div><div class="card-tags"><span class="tag tag-cat">برجر · ترندي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Patty+Slaps+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">5️⃣</span><span class="card-name">Five Guys</span></div><div class="card-desc">سلسلة أمريكية شهيرة ببرجرها الطازج وبطاطس المقلية اللذيذة.</div><div class="card-tags"><span class="tag tag-cat">برجر · أمريكي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Five+Guys+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🍔</span><span class="card-name">برجر يومي</span></div><div class="card-desc">برجر حلال يومي بأسعار مناسبة، جودة ممتازة وبروتين وفير!</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">برجر</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Burger+Yawmi+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🔥</span><span class="card-name">برجر زيز</span></div><div class="card-desc">برجر حلال ترندي متاح على أوبر إيتس، نكهات جريئة وإضافات مبتكرة.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-uber">Uber Eats</span><span class="tag tag-cat">برجر</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Burger+Ziz+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🫓</span><span class="card-name">برجر بلال</span></div><div class="card-desc">برجر بلال حلال مع توصيل أوبر إيتس، جودة عالية وقيمة ممتازة.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-uber">Uber Eats</span><span class="tag tag-cat">برجر</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Burger+Bilal+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+
+  <div class="section-header">🍕 إيطالي وباستا</div>
+  <div class="cards-list">
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🍕</span><span class="card-name">Pizzeria No.900</span></div><div class="card-desc">بيتزا نابولية أصيلة بفرن الحطب، من أرقى البيتزا في مونتريال.</div><div class="card-tags"><span class="tag tag-cat">بيتزا · إيطالي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Pizzeria+No+900+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🔥</span><span class="card-name">Il Focolaio</span></div><div class="card-desc">مطعم إيطالي عائلي بأجواء دافئة، باستا وبيتزا محضرة بعناية يومياً.</div><div class="card-tags"><span class="tag tag-cat">إيطالي · عائلي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Il+Focolaio+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🍝</span><span class="card-name">Jacopo</span></div><div class="card-desc">باستا وأطباق إيطالية في قلب الميل الذهبي، أجواء أنيقة وراقية.</div><div class="card-tags"><span class="tag tag-cat">إيطالي · راقي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Jacopo+Restaurant+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🍜</span><span class="card-name">Bar à Pâtes Lulu's</span></div><div class="card-desc">مطعم باستا متخصص بخيارات خالية من الغلوتين، مثالي لمن لديهم حساسية.</div><div class="card-tags"><span class="tag tag-gf">Gluten Free</span><span class="tag tag-cat">باستا · إيطالي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Bar+a+Pates+Lulus+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+
+  <div class="section-header">🌐 مطاعم عالمية</div>
+  <div class="cards-list">
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🥩</span><span class="card-name">Moishes Steakhouse</span></div><div class="card-desc">أيقونة مونتريال للستيك منذ 1938، تجربة فاخرة لا تتكرر.</div><div class="card-tags"><span class="tag tag-cat">ستيك · فاخر · كندي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Moishes+Steakhouse+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🏛️</span><span class="card-name">Gibby's</span></div><div class="card-desc">مطعم ستيك تاريخي في إسطبل قديم عمره 200 سنة، أجواء لا مثيل لها.</div><div class="card-tags"><span class="tag tag-cat">ستيك · تاريخي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Gibbys+Restaurant+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🥖</span><span class="card-name">Grinder</span></div><div class="card-desc">ساندويتشات وأطباق إبداعية في Old Montreal، مكان شعبي ومحبوب.</div><div class="card-tags"><span class="tag tag-cat">كندي · فيوجن</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Grinder+Restaurant+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🇮🇳</span><span class="card-name">India Rosa</span></div><div class="card-desc">مطبخ هندي أنيق بكاري حلال معظمه، نكهات جنوب آسيا الغنية.</div><div class="card-tags"><span class="tag tag-cat">هندي · فاخر</span></div><div class="card-map"><a href="https://www.google.com/maps/search/India+Rosa+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+
+  <div class="section-header">🌅 فطور وبرانش</div>
+  <div class="cards-list">
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🍳</span><span class="card-name">Eggstatic</span></div><div class="card-desc">كل شيء عن البيض! فطور مبتكر بخيارات إبداعية لا تصدق، مشهور جداً.</div><div class="card-tags"><span class="tag tag-cat">فطور · برانش</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Eggstatic+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🥐</span><span class="card-name">Olive et Gourmando</span></div><div class="card-desc">مخبز وكافيه في Old Montreal، خبز محلي طازج وفطور أوروبي راقٍ.</div><div class="card-tags"><span class="tag tag-cat">فطور · مخبز</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Olive+et+Gourmando+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🍽️</span><span class="card-name">L'Avenue</span></div><div class="card-desc">أشهر مطعم برانش في مونتريال، طوابير طويلة تشهد على جودته الاستثنائية.</div><div class="card-tags"><span class="tag tag-cat">برانش · مشهور</span></div><div class="card-map"><a href="https://www.google.com/maps/search/L+Avenue+Restaurant+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">☀️</span><span class="card-name">Dandy</span></div><div class="card-desc">فطور وغداء نهاري بطابع أنيق ومريح، خيارات صحية ولذيذة في آنٍ.</div><div class="card-tags"><span class="tag tag-cat">فطور · صحي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Dandy+Cafe+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🥞</span><span class="card-name">Arthur's Nosh Bar</span></div><div class="card-desc">فطور يهودي-كندي تقليدي بأجواء نوستالجية دافئة، من أحب المطاعم للمحليين.</div><div class="card-tags"><span class="tag tag-cat">فطور · كلاسيكي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Arthurs+Nosh+Bar+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">☕</span><span class="card-name">Solit Café</span></div><div class="card-desc">كافيه فطور هادئ ومميز، قهوة مختصة وفطور خفيف راقٍ.</div><div class="card-tags"><span class="tag tag-cat">فطور · كافيه</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Solit+Cafe+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🏪</span><span class="card-name">Universel Déjeuners</span></div><div class="card-desc">سلسلة فطور كندية شهيرة، كميات كبيرة وأسعار مناسبة، للجوعان الحقيقي!</div><div class="card-tags"><span class="tag tag-cat">فطور · كميات كبيرة</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Universel+Dejeuners+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+  <button class="back-btn" onclick="showCover()">🏠 الرئيسية</button>
+</div>
+
+<!-- ===================== PAGE: CAFES ===================== -->
+<div class="page" id="page-cafe">
+  <div class="page-header">
+    <div class="header-inner"><span class="page-icon">☕</span><div><div class="page-title">الكافيهات</div><div class="page-subtitle">CAFÉS · MONTREAL</div></div></div>
+  </div>
+  <div class="warning-box">⚠️ تنبيه مهم: دائماً تأكد من مواعيد الفتح والإغلاق عبر قوقل ماب قبل التوجه، وبعض الأماكن تحتاج حجزاً مسبقاً!</div>
+  <div class="section-header">☕ أفضل الكافيهات</div>
+  <div class="cards-list">
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🏛️</span><span class="card-name">Crew Collective</span></div><div class="card-desc">كافيه داخل بنك قديم أثري، ديكور مبهر وقهوة رائعة — تجربة بصرية فريدة.</div><div class="card-tags"><span class="tag tag-cat">كافيه · آيكونيك</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Crew+Collective+Cafe+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🫘</span><span class="card-name">49th Parallel</span></div><div class="card-desc">محمصة قهوة كندية متميزة، قهوة مختصة بمعايير عالية وأجواء هادئة.</div><div class="card-tags"><span class="tag tag-cat">قهوة مختصة</span></div><div class="card-map"><a href="https://www.google.com/maps/search/49th+Parallel+Coffee+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🏗️</span><span class="card-name">Structure Roasters</span></div><div class="card-desc">محمصة قهوة مستقلة بتصميم صناعي، يحمص قهوته بنفسه لضمان أعلى جودة.</div><div class="card-tags"><span class="tag tag-cat">محمصة · مستقل</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Structure+Roasters+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🏆</span><span class="card-name">Café Olimpico</span></div><div class="card-desc">أفضل إسبريسو في مونتريال بإجماع المحليين، كافيه إيطالي عريق منذ عقود.</div><div class="card-tags"><span class="tag tag-cat">إيطالي · إسبريسو</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Cafe+Olimpico+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">💡</span><span class="card-name">Diff Café</span></div><div class="card-desc">كافيه مختلف بمفهوم مبتكر، مشروبات إبداعية وأجواء شبابية حيوية.</div><div class="card-tags"><span class="tag tag-cat">كافيه · مبتكر</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Diff+Cafe+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🗺️</span><span class="card-name">Columbus Café</span></div><div class="card-desc">سلسلة فرنسية محبوبة بقهوة لذيذة وحلويات رائعة، أفرع متعددة في المدينة.</div><div class="card-tags"><span class="tag tag-cat">فرنسي · سلسلة</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Columbus+Cafe+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🌊</span><span class="card-name">San Sebastian</span></div><div class="card-desc">كافيه إسباني الطابع بمشروبات متميزة وحلويات أوروبية، أجواء هادئة ومريحة.</div><div class="card-tags"><span class="tag tag-cat">كافيه · أوروبي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/San+Sebastian+Cafe+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-food"><div class="card-name-row"><span class="card-emoji">🌙</span><span class="card-name">Mahrousa محروسة</span></div><div class="card-desc">كافيه عربي بمشروبات شرقية كالقهوة العربية والنعناع، لمسة وطنية دافئة.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">عربي · شرقي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Mahrousa+Cafe+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+  <button class="back-btn" onclick="showCover()">🏠 الرئيسية</button>
+</div>
+
+<!-- ===================== PAGE: SHOPPING ===================== -->
+<div class="page" id="page-shop">
+  <div class="page-header">
+    <div class="header-inner"><span class="page-icon">🛍️</span><div><div class="page-title">التسوق</div><div class="page-subtitle">SHOPPING · MONTREAL</div></div></div>
+  </div>
+  <div class="warning-box">⚠️ تنبيه مهم: دائماً تأكد من مواعيد الفتح والإغلاق عبر قوقل ماب قبل التوجه، وبعض الأماكن تحتاج حجزاً مسبقاً!</div>
+  <div class="section-header">🏬 مولات التسوق</div>
+  <div class="cards-list">
+    <div class="card card-shop"><div class="card-name-row"><span class="card-emoji">👑</span><span class="card-name">Royalmount Mall</span></div><div class="card-desc">أحدث وأفخم مول في مونتريال، ماركات عالمية راقية ومطاعم وتسلية متكاملة.</div><div class="card-tags"><span class="tag tag-cat">مول · فاخر</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Royalmount+Mall+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-shop"><div class="card-name-row"><span class="card-emoji">🏙️</span><span class="card-name">Eaton Centre</span></div><div class="card-desc">قلب التسوق في وسط المدينة، متصل بالمترو، محلات لكل الأذواق والميزانيات.</div><div class="card-tags"><span class="tag tag-cat">مول · وسط المدينة</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Eaton+Centre+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-shop"><div class="card-name-row"><span class="card-emoji">💰</span><span class="card-name">Premium Outlets</span></div><div class="card-desc">أوتلت الماركات العالمية بأسعار مخفضة، مناسب للتسوق الاقتصادي للعلامات التجارية.</div><div class="card-tags"><span class="tag tag-cat">أوتلت · تخفيضات</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Premium+Outlets+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+  <div class="section-header">👗 ملابس وأزياء</div>
+  <div class="cards-list">
+    <div class="card card-shop"><div class="card-name-row"><span class="card-emoji">🍁</span><span class="card-name">Simons</span></div><div class="card-desc">سلسلة كندية أصيلة بأزياء عصرية وأسعار معقولة، من أفضل خيارات الملابس المحلية.</div><div class="card-tags"><span class="tag tag-cat">ملابس · كندي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Simons+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-shop"><div class="card-name-row"><span class="card-emoji">👔</span><span class="card-name">Moores Clothing</span></div><div class="card-desc">ملابس رجالية رسمية وكاجوال بأسعار مناسبة، بدلات وقمصان بجودة ممتازة.</div><div class="card-tags"><span class="tag tag-cat">ملابس رجالية</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Moores+Clothing+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-shop"><div class="card-name-row"><span class="card-emoji">🏷️</span><span class="card-name">Winners</span></div><div class="card-desc">تشكيلة واسعة من الملابس والأكسسوارات والأدوات المنزلية بأسعار مخفضة دائماً.</div><div class="card-tags"><span class="tag tag-cat">تخفيضات · متنوع</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Winners+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-shop"><div class="card-name-row"><span class="card-emoji">🎯</span><span class="card-name">Marshalls</span></div><div class="card-desc">ماركات عالمية بأسعار مخفضة، كل يوم تشكيلة جديدة — لا تفوت زيارته.</div><div class="card-tags"><span class="tag tag-cat">ماركات · تخفيضات</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Marshalls+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+  <button class="back-btn" onclick="showCover()">🏠 الرئيسية</button>
+</div>
+
+<!-- ===================== PAGE: GROCERY ===================== -->
+<div class="page" id="page-grocery">
+  <div class="page-header">
+    <div class="header-inner"><span class="page-icon">🛒</span><div><div class="page-title">سوبرماركت</div><div class="page-subtitle">GROCERY · MONTREAL</div></div></div>
+  </div>
+  <div class="warning-box">⚠️ تنبيه مهم: دائماً تأكد من مواعيد الفتح والإغلاق عبر قوقل ماب قبل التوجه، وبعض الأماكن تحتاج حجزاً مسبقاً!</div>
+  <div class="section-header">🌙 عربي وحلال</div>
+  <div class="cards-list">
+    <div class="card card-shop"><div class="card-name-row"><span class="card-emoji">🏪</span><span class="card-name">Costco</span></div><div class="card-desc">منتجات بكميات كبيرة بأسعار مميزة، يحتاج عضوية — لحوم وسلع متنوعة بجودة عالية.</div><div class="card-tags"><span class="tag tag-cat">جملة · متنوع</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Costco+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-shop"><div class="card-name-row"><span class="card-emoji">🫒</span><span class="card-name">Adonis أدونيس</span></div><div class="card-desc">سوبرماركت شرق أوسطي ضخم بمنتجات حلال متنوعة، خضار وتوابل وحلويات عربية.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">عربي · شرق أوسطي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Adonis+Supermarket+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-shop"><div class="card-name-row"><span class="card-emoji">⚖️</span><span class="card-name">Supermarché Mizan</span></div><div class="card-desc">سوبرماركت حلال عربي بمنتجات طازجة ومتنوعة، خيار ممتاز للمتسوق العربي.</div><div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">عربي · حلال</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Supermarche+Mizan+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+  <div class="section-header">🍁 كندي</div>
+  <div class="cards-list">
+    <div class="card card-shop"><div class="card-name-row"><span class="card-emoji">🥬</span><span class="card-name">IGA</span></div><div class="card-desc">سلسلة سوبرماركت كندية راقية، تشكيلة واسعة من المنتجات الطازجة والمحلية.</div><div class="card-tags"><span class="tag tag-cat">كندي · متنوع</span></div><div class="card-map"><a href="https://www.google.com/maps/search/IGA+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-shop"><div class="card-name-row"><span class="card-emoji">💲</span><span class="card-name">Maxi</span></div><div class="card-desc">سوبرماركت اقتصادي بأسعار منخفضة، مثالي للتسوق اليومي الموفر.</div><div class="card-tags"><span class="tag tag-cat">اقتصادي · يومي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Maxi+Supermarket+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+  <button class="back-btn" onclick="showCover()">🏠 الرئيسية</button>
+</div>
+
+<!-- ===================== PAGE: SERVICES ===================== -->
+<div class="page" id="page-services">
+  <div class="page-header">
+    <div class="header-inner"><span class="page-icon">🏥</span><div><div class="page-title">خدمات عامة</div><div class="page-subtitle">PUBLIC SERVICES · MONTREAL</div></div></div>
+  </div>
+  <div class="warning-box">⚠️ تنبيه مهم: دائماً تأكد من مواعيد الفتح والإغلاق عبر قوقل ماب قبل التوجه، وبعض الأماكن تحتاج حجزاً مسبقاً!</div>
+  <div class="section-header">🏥 مستشفيات</div>
+  <div class="cards-list">
+    <div class="card card-service"><div class="card-name-row"><span class="card-emoji">🏥</span><span class="card-name">McGill MUHC</span></div><div class="card-desc">أكبر مركز صحي جامعي في كندا، طوارئ 24/7 ومراكز متخصصة بمعايير عالمية.</div><div class="card-tags"><span class="tag tag-cat">مستشفى · طوارئ</span></div><div class="card-map"><a href="https://www.google.com/maps/search/McGill+MUHC+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-service"><div class="card-name-row"><span class="card-emoji">🏨</span><span class="card-name">Jewish General Hospital</span></div><div class="card-desc">مستشفى متميز بخدمات طوارئ ومتخصصين بارزين، من أفضل المستشفيات في المقاطعة.</div><div class="card-tags"><span class="tag tag-cat">مستشفى · متخصص</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Jewish+General+Hospital+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-service"><div class="card-name-row"><span class="card-emoji">🏛️</span><span class="card-name">Montreal General Hospital</span></div><div class="card-desc">مستشفى عام مرتبط بجامعة McGill، يقدم رعاية صحية شاملة في وسط المدينة.</div><div class="card-tags"><span class="tag tag-cat">مستشفى · عام</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Montreal+General+Hospital" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+  <div class="section-header">💊 صيدليات</div>
+  <div class="cards-list">
+    <div class="card card-service"><div class="card-name-row"><span class="card-emoji">💊</span><span class="card-name">Pharmaprix</span></div><div class="card-desc">أكبر سلسلة صيدليات في كيبيك، أفرع منتشرة وبعضها مفتوح 24 ساعة.</div><div class="card-tags"><span class="tag tag-cat">صيدلية · سلسلة</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Pharmaprix+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-service"><div class="card-name-row"><span class="card-emoji">🩺</span><span class="card-name">Jean Coutu</span></div><div class="card-desc">صيدلية كيبيكية شعبية بأسعار تنافسية وصيادلة متاحون للاستشارة.</div><div class="card-tags"><span class="tag tag-cat">صيدلية · كيبيكي</span></div><div class="card-map"><a href="https://www.google.com/maps/search/Jean+Coutu+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+  <div class="section-header">🚇 تنقل</div>
+  <div class="cards-list">
+    <div class="card card-service"><div class="card-name-row"><span class="card-emoji">🚇</span><span class="card-name">STM Metro</span></div><div class="card-desc">شبكة مترو مونتريال بـ 4 خطوط، الأسرع للتنقل في المدينة — اشتري بطاقة OPUS.</div><div class="card-tags"><span class="tag tag-cat">مواصلات عامة</span></div><div class="card-map"><a href="https://www.google.com/maps/search/STM+Metro+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+    <div class="card card-service"><div class="card-name-row"><span class="card-emoji">🚲</span><span class="card-name">BIXI دراجات</span></div><div class="card-desc">دراجات مشتركة منتشرة في كل مكان، ممتازة لاستكشاف الأحياء والمتنزهات.</div><div class="card-tags"><span class="tag tag-cat">دراجات · سياحة</span></div><div class="card-map"><a href="https://www.google.com/maps/search/BIXI+Bikes+Montreal" target="_blank">📍 اللوكيشن</a></div></div>
+  </div>
+  <div class="section-header">📞 أرقام الطوارئ</div>
+  <div style="padding: 0 14px 26px;">
+    <div class="tip-box">
+      <strong>🚨 911</strong> — الإسعاف والشرطة وإطفاء الحرائق<br>
+      <strong>🏥 811</strong> — الخط الصحي (Info-Santé) للاستشارة الطبية<br>
+      <strong>🏙️ 311</strong> — خدمات بلدية مونتريال العامة<br><br>
+      <strong>💡 نصيحة:</strong> احتفظ بهذه الأرقام في هاتفك — الطوارئ لا تستأذن!
+    </div>
+  </div>
+  <button class="back-btn" onclick="showCover()">🏠 الرئيسية</button>
+</div>
+
+<!-- ===================== PAGE: ATTRACTIONS ===================== -->
+<div class="page" id="page-attractions">
+  <div class="page-header">
+    <div class="header-inner">
+      <span class="page-icon">🎡</span>
+      <div>
+        <div class="page-title">ترفيه وسياحة</div>
+        <div class="page-subtitle">ATTRACTIONS · MONTREAL</div>
+      </div>
+    </div>
+  </div>
+  <div class="warning-box">⚠️ تنبيه مهم: دائماً تأكد من مواعيد الفتح والإغلاق عبر قوقل ماب قبل التوجه، وبعض الأماكن تحتاج حجزاً مسبقاً!</div>
+
+  <div class="section-header">🏛️ معالم تاريخية وطبيعية</div>
+  <div class="cards-list">
+
+    <div class="card card-service">
+      <div class="card-name-row"><span class="card-emoji">🪨</span><span class="card-name">Old Montréal</span></div>
+      <div class="card-desc">حي مونتريال القديم التاريخي، شوارع مرصوفة بالحجارة وعمارة أيقونية وأجواء ساحرة لا تُنسى. من أجمل الأحياء التاريخية في كندا.</div>
+      <div class="card-tags"><span class="tag tag-cat">تاريخي · سياحة</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/Old+Montreal+Historic+District" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+    <div class="card card-service">
+      <div class="card-name-row"><span class="card-emoji">⛰️</span><span class="card-name">Mount Royal Park</span></div>
+      <div class="card-desc">جبل أخضر ضخم في قلب المدينة، من أشهر معالم مونتريال. مثالي للتنزه والاسترخاء والاستمتاع بإطلالة بانورامية رائعة على المدينة.</div>
+      <div class="card-tags"><span class="tag tag-cat">طبيعة · متنزه</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/Mount+Royal+Park+Montreal" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+  </div>
+
+  <div class="section-header">🎢 ترفيه وعلوم</div>
+  <div class="cards-list">
+
+    <div class="card card-service">
+      <div class="card-name-row"><span class="card-emoji">🎢</span><span class="card-name">La Ronde</span></div>
+      <div class="card-desc">أكبر مدينة ملاهٍ في مونتريال وواحدة من أكبرها في كندا، مثالية لمحبي الإثارة والمغامرة مع العائلة والأصدقاء.</div>
+      <div class="card-tags"><span class="tag tag-cat">ملاهي · عائلي</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/La+Ronde+Montreal" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+    <div class="card card-service">
+      <div class="card-name-row"><span class="card-emoji">🦋</span><span class="card-name">Biodôme de Montréal</span></div>
+      <div class="card-desc">حديقة حيوانات داخلية علمية فريدة، تمشي عبر 5 نظم بيئية مختلفة: غابات استوائية، مناطق قطبية، ونهر سانت لورانس. تجربة استثنائية للعائلة.</div>
+      <div class="card-tags"><span class="tag tag-cat">علوم · عائلي</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/Biodome+Montreal" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+  </div>
+
+  <div class="section-header">🎭 فعاليات وساحات</div>
+  <div class="cards-list">
+
+    <div class="card card-service">
+      <div class="card-name-row"><span class="card-emoji">🎭</span><span class="card-name">Place des Festivals</span></div>
+      <div class="card-desc">الساحة الخارجية الرئيسية للعروض والفعاليات في وسط مونتريال، في قلب حي Quartier des Spectacles وعلى بُعد خطوات من مبنى الإيكاو.</div>
+      <div class="card-tags"><span class="tag tag-cat">فعاليات · وسط المدينة</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/Place+des+Festivals+Montreal" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+  </div>
+
+  <div class="section-header">🍎 طبيعة وتجارب موسمية</div>
+  <div class="cards-list">
+
+    <div class="card card-service">
+      <div class="card-name-row"><span class="card-emoji">🍎</span><span class="card-name">Vergers Petit & Fils — قطف التفاح</span></div>
+      <div class="card-desc">مزرعة عائلية شهيرة عند سفح جبل Saint-Hilaire على بُعد ساعة من مونتريال. تجربة قطف التفاح الأكثر شعبية في كيبيك — ركوب الجرار، متاهة الذرة، مزرعة حيوانات، أكثر من 10 أنواع تفاح، وتذوق عصير السيدر. موسمها من أغسطس حتى أكتوبر.</div>
+      <div class="card-tags"><span class="tag tag-cat">عائلي · موسمي · طبيعة</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/Vergers+Petit+Fils+Mont+Saint+Hilaire" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+    <div class="card card-service">
+      <div class="card-name-row"><span class="card-emoji">🌿</span><span class="card-name">Labonté de la Pomme — Oka</span></div>
+      <div class="card-desc">مزرعة تفاح وعسل ساحرة في وادي أوكا، تُعدّ الأجمل منظراً قرب مونتريال. تضم مزرعة صغيرة للحيوانات، جولات بالجرار، وجبات farm-to-table بفرن الحطب في الهواء الطلق، ومنتجات محلية متميزة.</div>
+      <div class="card-tags"><span class="tag tag-cat">عائلي · موسمي · طبيعة</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/Labonte+de+la+Pomme+Oka+Quebec" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+  </div>
+
+  <div class="section-header">🏛️ ثقافة وتاريخ</div>
+  <div class="cards-list">
+
+    <div class="card card-service">
+      <div class="card-name-row"><span class="card-emoji">⛪</span><span class="card-name">Notre-Dame Basilica</span></div>
+      <div class="card-desc">أيقونة مونتريال المعمارية الأكثر شهرة — كنيسة القوطية الرائعة بنوافذ زجاجية ملونة ونقوش خشبية معقدة وسقف أزرق مرصّع بالذهب. تستضيف عرض الضوء والصوت الليلي الخلاب "AURA". زارها ملايين من حول العالم.</div>
+      <div class="card-tags"><span class="tag tag-cat">تاريخي · معماري</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/Notre+Dame+Basilica+Montreal" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+    <div class="card card-service">
+      <div class="card-name-row"><span class="card-emoji">🔭</span><span class="card-name">Montreal Olympic Park</span></div>
+      <div class="card-desc">الحديقة الأولمبية التاريخية من دورة 1976، تضم الاستاد الأولمبي، برج مونتريال الأطول في العالم، والحديقة النباتية الضخمة — واحدة من أكبر حدائق النباتات في العالم. وجهة متكاملة للتاريخ والطبيعة والعلوم.</div>
+      <div class="card-tags"><span class="tag tag-cat">تاريخي · عائلي</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/Montreal+Olympic+Park" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+    <div class="card card-service">
+      <div class="card-name-row"><span class="card-emoji">🛍️</span><span class="card-name">Marché Jean-Talon</span></div>
+      <div class="card-desc">أشهر وأكبر سوق مفتوح في كندا، يضج بالحياة طوال العام. خضروات وفواكه وجبن محلي وتوابل ومنتجات كيبيكية طازجة وأطعمة من حول العالم. تجربة ثقافية حقيقية يعشقها المحليون والزوار على حد سواء.</div>
+      <div class="card-tags"><span class="tag tag-cat">سوق · ثقافي · طازج</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/Marche+Jean+Talon+Montreal" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+    <div class="card card-service">
+      <div class="card-name-row"><span class="card-emoji">🌐</span><span class="card-name">Underground City — RÉSO</span></div>
+      <div class="card-desc">مدينة تحت الأرض! شبكة أنفاق تمتد 33 كيلومتراً تربط المترو بالمراكز التجارية والفنادق والمطاعم والمكاتب. مثالية في الشتاء القارس — يمكنك التنقل لساعات دون أن تلمس البرد. من أكبر شبكات المشاة تحت الأرض في العالم.</div>
+      <div class="card-tags"><span class="tag tag-cat">فريد · تجربة</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/RESO+Underground+City+Montreal" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+  </div>
+
+  <button class="back-btn" onclick="showCover()">🏠 الرئيسية</button>
+</div>
+
+<!-- ===================== PAGE: WALAAIM ===================== -->
+<div class="page" id="page-walaaim">
+  <div class="page-header">
+    <div class="header-inner">
+      <span class="page-icon">🍖</span>
+      <div>
+        <div class="page-title">ولائم وذبائح</div>
+        <div class="page-subtitle">CATERING & HALAL MEAT · MONTREAL</div>
+      </div>
+    </div>
+  </div>
+  <div class="warning-box">⚠️ تنبيه مهم: جميع الطلبات تحتاج حجزاً مسبقاً — تواصل مباشرة قبل التوجه أو الطلب.</div>
+
+  <div class="section-header">🍽️ مطاعم الولائم والتموين</div>
+  <div class="cards-list">
+
+    <div class="card card-food">
+      <div class="card-name-row"><span class="card-emoji">👑</span><span class="card-name">مطعم قصر الكباب</span></div>
+      <div class="card-desc">مطعم كباب شرقي متخصص بالولائم والمناسبات الكبيرة، يقدم تشكيلة واسعة من المشويات والأطباق الشرقية الأصيلة لتجمعاتك العائلية وحفلاتك.</div>
+      <div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">ولائم · كباب · مناسبات</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/قصر+الكباب+مونتريال" target="_blank">📍 اللوكيشن</a></div>
+      <div class="card-map" style="margin-top:6px"><a href="tel:+15146553770" style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.78rem;font-weight:700;">📞 +1 (514) 655-3770</a></div>
+    </div>
+
+    <div class="card card-food">
+      <div class="card-name-row"><span class="card-emoji">🤲</span><span class="card-name">أبو عتيق — طبخ ولائم</span></div>
+      <div class="card-desc">خدمة طبخ ولائم منزلية متخصصة بأطباق اللحم والدجاج للمناسبات والتجمعات. خدمة توصيل فقط عبر الطلبات المسبقة — جودة عالية بلمسة منزلية أصيلة.</div>
+      <div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">توصيل فقط · طلبات مسبقة</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/Abu+Ateek+catering+Montreal" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+    <div class="card card-food">
+      <div class="card-name-row"><span class="card-emoji">👨‍🍳</span><span class="card-name">مطعم الشيف LE CHEF</span></div>
+      <div class="card-desc">مطبخ شرق أوسطي احترافي يقدم ولائم لحم ودجاج وأكلات سعودية شعبية كالكبسة والمندي والمظبي، مثالي للمناسبات والتجمعات الكبيرة بلمسة فاين دايننج.</div>
+      <div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">ولائم · سعودي · شرق أوسطي</span></div>
+      <div class="card-map"><a href="https://www.google.com/maps/search/Le+Chef+Restaurant+Montreal" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+    <div class="card card-food">
+      <div class="card-name-row"><span class="card-emoji">🇮🇶</span><span class="card-name">Feenah Takeout فينة</span></div>
+      <div class="card-desc">مطعم عراقي عائلي أصيل متخصص بولائم اللحم والدجاج بأسلوب عراقي منزلي — قوزي الخروف، مطبق الدجاج، دولمة، كبة، ومندي. يقبل طلبات الولائم المسبقة. العنوان: 10514 Boul. Saint-Laurent | ☎ (438) 459-6475</div>
+      <div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-uber">Uber Eats</span><span class="tag tag-cat">عراقي · ولائم</span></div>
+      <div class="card-map"><a href="https://maps.app.goo.gl/o2QnFjWYh3EFkbAEA" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+  </div>
+
+  <div class="section-header">🐑 مزارع الذبائح والأنعام</div>
+  <div class="cards-list">
+
+    <div class="card card-food">
+      <div class="card-name-row"><span class="card-emoji">🐑</span><span class="card-name">Abattoir Emin — كناوكاي</span></div>
+      <div class="card-desc">مزرعة وملجأ أنعام حلال في منطقة كناوكاي (Kahnawake)، تبعد حوالي 20 دقيقة عن داون تاون مونتريال. يمتلكها مسلمون، تقدم خراف وأبقار طازجة بجودة عالية ونظافة ممتازة. مثالية لذبح عيد الأضحى والمناسبات الخاصة. ساعات العمل: الثلاثاء-السبت 9 ص–4 م | ☎ 450-638-4385 | العنوان: 450 Old Châteauguay Rd, Kahnawake</div>
+      <div class="card-tags"><span class="tag tag-halal">حلال ✓</span><span class="tag tag-cat">خراف · أبقار · ذبائح</span></div>
+      <div class="card-map"><a href="https://maps.app.goo.gl/w43AkEsRPKLkcqbp6" target="_blank">📍 اللوكيشن</a></div>
+    </div>
+
+  </div>
+
+  <button class="back-btn" onclick="showCover()">🏠 الرئيسية</button>
+</div>
+
+</div><!-- end .app -->
+<script>
+  function showPage(id) {
+    document.getElementById('cover').style.display = 'none';
+    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+    const p = document.getElementById(id);
+    if (p) { p.style.display = 'block'; window.scrollTo(0, 0); }
+  }
+  function showCover() {
+    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+    document.getElementById('cover').style.display = 'flex';
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
